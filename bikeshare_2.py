@@ -1,3 +1,15 @@
+"""
+The bikeshare program will take as input from the user a selected city and optional filters
+and display a number of statistial references.
+
+Some of the statistical information is irelevent based on the filters or not available based on the
+selected city and will be skipped as needed.
+
+Basic input validations are used here.  Doesn't mean there's no way to 'break' the code, but basics
+are covered
+
+"""
+
 import time
 import pandas as pd
 import numpy as np
