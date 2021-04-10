@@ -42,6 +42,7 @@ def print_raw_data(df):
     more_raw = 'y'
     
     while more_raw == 'y':
+        pd.set_option('display.max_columns',200)
         print(df.iloc[counter:counter+5])
         more_raw = input('Another five? Y/N ').lower()
         if more_raw == 'y':
