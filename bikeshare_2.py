@@ -1,6 +1,7 @@
 import time
 import pandas as pd
 import numpy as np
+import calendar
 
 """
 Establish dictionary references for use throughout
@@ -201,13 +202,10 @@ def time_stats(df, month, day):
                 most_common_month = num.title()
         print('The most common month is: {}'.format(most_common_month))                        
 
-    # If we haven't filtered by day, use mode to get most common day of week number, then reference the day dictionary to get the title       
+    # If we haven't filtered by day, Sort the results highest to lowest and then return the name of the day of the week that was highest (first in sorted list)
     if day == 'all': 
-        most_common_day = df['day_of_week'].mode()[0]
-        for num in DAY_DATA:
-            if DAY_DATA[num] == most_common_day:
-                most_common_day = num.title()
-        print('The most common day is: {}'.format(most_common_day))
+        most_common_day = df.groupby('day_of_week')['Start Time'].count()
+        print('The most common day of the week: ' + calendar.day_name[int(most_common_day.sort_values(ascending=False).index[0])])
               
     # Display the most common Start hour, convert to a 12hr clock representation
     df['hour'] = df['Start Time'].dt.hour   
