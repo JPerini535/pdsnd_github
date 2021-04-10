@@ -315,11 +315,11 @@ def user_stats(df, city):
     # Display earliest, latest, and most common year of birth. Need to validate if Birth Year is present in dataform - not all cities contain this data
     if 'Birth Year' not in df:
         print("There is no birth data for {} \n".format(city)) 
-    else:    
-        print('Earliest birth year: ' + str(int(df['Birth Year'].min())))
-        print('Latest birth year: ' + str(int(df['Birth Year'].max()))) 
-        print("Most common birth year: " + str(int(df.groupby('Birth Year')['Birth Year'].count().sort_values(ascending=False).index[0])))
-   
+    else: 
+        print('Earliest birth year: {}'.format(str(int(df['Birth Year'].min()))))
+        print('Latest birth year: {}'.format(str(int(df['Birth Year'].max())))) 
+        print('Most common birth year: {}'.format(str(int(df.groupby('Birth Year')['Birth Year'].count().sort_values(ascending=False).index[0]))))      
+    
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
